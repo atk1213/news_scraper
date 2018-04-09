@@ -1,0 +1,53 @@
+<div class="container-fluid notes-container">
+    <div class="col-md-12 jumbotron">
+        <div class="text-center">
+            <h1> Scraper</h1>
+            <h2>Saved Articles</h2>
+        </div>
+    </div>
+    <div class="col-md-2">&nbsp;</div>
+    <div class="col-xs-12 col-md-8">
+        {{#if article}} {{#each article}}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span>
+                <h4>{{this.title}}</h4>
+                <button type="button" class="btn btn-danger remove" data-id={{this._id}}>Remove This Article</button>
+                </span>
+            </div>
+            <div class="panel-body">
+                <p> {{this.summary}}</p>
+                <a href={{this.link}} target="_blank">{{this.link}}</a>
+                <p></p>
+                <div class="note_section">
+                    {{#if this.notes}} {{#each this.notes}}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="previousNotes"> {{this.body}}</p>
+                            <button type="button" class="btn btn-danger deleteNote" data-note-id={{this._id}} data-article-id={{this.article}}>Remove Note</button>
+                        </div>
+                    </div>
+                    {{/each}} {{else}}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h4>No notes for this article yet.</h4>
+                        </div>
+                    </div>
+                    {{/if}}
+                    <div class="form-group">
+                        <textarea id="noteText{{this._id}}" class="form-control" rows="4" placeholder="New Note"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary saveNote" data-id={{this._id}}>Save Note</button>
+                </div>
+            </div>
+        </div>
+        {{/each}} {{else}}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>You have no saved articles.</h4>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+        <div class="col-md-2">&nbsp;</div>
+</div>
