@@ -10,8 +10,8 @@ const cheerio = require("cheerio");
 const request = require("request");
 
 const app = express();
-let PORT = 3000;
-// let PORT = process.env.PORT || 3000;
+// let PORT = 3000;
+let PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const exphbs = require("express-handlebars");
