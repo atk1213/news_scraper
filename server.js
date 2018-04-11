@@ -23,8 +23,13 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/scraper");
-// mongoose.connect("mongodb://heroku");
+// mongoose.connect("mongodb://localhost/scraper");
+mongoose.connect(process.en.MONGODB_URI, function (error){
+    if (error) {
+        console.log(error)
+    }
+    else console.log("connected successfully")
+});
 
 var db = mongoose.connection;
 
